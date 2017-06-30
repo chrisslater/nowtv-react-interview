@@ -1,26 +1,16 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import React from 'react';
 
-import getChatLog from './service';
+import MembersContainer from './containers/MembersContainer';
+import MessagesContainer from './containers/MessagesContainer';
+import { Messenger } from './components/Messenger';
 
-import './App.css';
-
-class App extends Component {
-  render() {
-    return (
-      <h1>Hello!</h1>
-    );
-  }
+export default function App(props) {
+  return (
+    <MembersContainer>
+      <MessagesContainer>
+        <Messenger />
+      </MessagesContainer>
+    </MembersContainer>
+  );
 }
 
-const mapStateToProps = state => {
-  return {};
-};
-
-const mapDispatchToProps = dispatch => bindActionCreators({ getChatLog }, dispatch);
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);

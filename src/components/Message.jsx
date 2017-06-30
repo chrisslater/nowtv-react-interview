@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Message.css';
 
 export class Message extends Component {
   state = {
@@ -6,17 +7,11 @@ export class Message extends Component {
   };
 
   render() {
-    const {
-      avatar,
-      message,
-    } = this.props;
-    const {
-      isMessageHover,
-    } = this.state;
+    const { message } = this.props;
+    const { isMessageHover } = this.state;
 
     return (
       <div>
-        {(avatar) ? (<img className="avatar" src={avatar} />) : null}
         <div
           className="message"
           onMouseOver={this.handleMessageMouseOver.bind(this)}
@@ -24,7 +19,7 @@ export class Message extends Component {
         >
           {message}
         </div>
-        {(isMessageHover) ? (<div className={'email'}></div>): null}
+        {(isMessageHover) ? (this.props.children): null}
       </div>
     );
   }

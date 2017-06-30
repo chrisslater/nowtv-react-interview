@@ -12,3 +12,14 @@ it('should set messages in the store', () => {
 
   expect(updatedStore.messages).toEqual(messages);
 });
+
+it('should set members in the store', () => {
+  const members = ['members'];
+  const updatedStore = reducer({}, { type: 'MEMBERS_LOADING_FULFILLED', payload: members });
+  expect(updatedStore.members).toEqual(members);
+});
+
+it('should not set anything in store', () => {
+  const updatedStore = reducer({}, { type: 'RANDOM_MESSAGE', payload: '' });
+  expect(updatedStore.members).toEqual(undefined);
+});
