@@ -7,11 +7,11 @@ import './Messages.css';
 export function Messages(props) {
   const { members, messages } = props;
 
-  const sortedMessages = messages.sort((a, b) => a.timestamp > b.timestamp);
-
   return (
     <div>
-      {messages.map((message) => {
+      {messages
+        .sort((a, b) => (a.timestamp < b.timestamp) ? 1 : -1)
+        .map((message) => {
         const userId = message.userId;
         const member = members.find((member) => userId === member.id);
 
