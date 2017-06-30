@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import * as service from '../service';
 
-class MembersContainer extends Component {
+export class MembersContainer extends Component {
   componentDidMount() {
     this.props.getMembers();
   }
