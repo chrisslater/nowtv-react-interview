@@ -15,13 +15,13 @@ const members = [
   ];
   const messages = [
     {
-      "id": "cd445e6d-e514-424f-ba8f-16ec842002c6",
+      "id": "first",
       "userId": "123",
       "message": "Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla.",
-      "timestamp": "2017-02-09T04:27:38Z"
+      "timestamp": "2016-02-09T04:27:38Z"
     },
     {
-      "id": "cd445e6d-e514-424f-ba8f-16ec842002c6",
+      "id": "second",
       "userId": "456",
       "message": "Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla.",
       "timestamp": "2017-02-09T04:27:38Z"
@@ -47,5 +47,15 @@ it('should display the correct number of Messages', () => {
     />
   );
 
-  expect(wrapper.find('.avatar')).toHaveLength(1);
+  expect(wrapper.find('.messages-profile')).toHaveLength(2);
+});
+
+it('should sort Messages in desc order', () => {
+  const wrapper = shallow(
+    <Messages
+      members={members}
+      messages={messages}
+    />
+  );
+  expect(wrapper.find('.messages-profile').first().key()).toEqual('second');
 });
